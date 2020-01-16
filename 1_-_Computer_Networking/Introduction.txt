@@ -1,0 +1,125 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-01-13T17:05:39-06:00
+
+====== Introduction ======
+Created Monday 13 January 2020
+
+Textbook:
+Computer Networking
+
+===== Overview =====
+* Internet
+* Protocols
+* Network edge (hosts, access net, physical media)
+* Network core (packet/circuit switching, Internet structure)
+* Performance (loss, delay, throughput)
+* Protocol layers, service models
+
+===== What is the Internet =====
+* Billions of connected computing devices
+	* **hosts** = end systems
+	* running **network applications**
+* **Communication links**
+	* fiber, copper, radio, satellite
+	* transmission rate (**bandwidth**)
+* **Packet switches**
+	* forward packets (chunks of data)
+	* **routers** and **switches**
+* **Internet**: "network of networks"
+	* Interconnected ISPs (Internet Servce Providers)
+* **protocols** control sending, receiving of messages
+	* eg TCP, IP, HTTP, websockets, 802.11, skype, etc
+* infrastructure that provides services to applications
+* provides programming interface to network applications
+
+===== What is a protocol =====
+Define format, orderof messages sent and received among network entities, and actions taken on message transmission, receipt.
+
+===== Network Structure =====
+
+* Network Edge
+	* hosts: clients and servers
+	* servers often in data centers
+* Access networks, physical media
+	* wired, wireless communication links
+* Network core
+	* interconnected routers
+	* network of networks
+
+==== Network Edge ====
+
+End systems are connected via some net
+* residential access net
+* institutional access net
+* radio (cellular)
+
+Transmission rate (bandwidth)
+* bit rate (R) 
+* unit: bits / s
+
+
+Host sends packets of data
+* breaks a message into packets (size L)
+* sends at transmission rate R
+
+==== Network Core ====
+
+* Mesh of interconnected routers
+* **packet-switching:** hosts break application-layer messages into packets
+	* forward across the net
+
+* takes L / R seconds to transmit L-bit packet into link at R bps
+* store and forward: entire packet must arrive at router before it can be transmitted
+* end-end delay = 2L/R (assuming zero propagation delay)
+* queuing and loss
+	* if arrival rate to link exceeds transmission rate of link
+		* packets will queue
+		* can be dropped if buffer fills up
+
+* Functions
+	* routing
+		* determine source-destination route taken by packets
+		* routing algorithms
+		* Typically each router only chooses the next step, not the whole path
+	* forwarding
+		* move packets from routers input to appropriate router output
+* Alternative core: circuit switching
+	* end-end resources allocated to, reserved for 'call' between source and destination
+	* dedicated resources: no sharing
+		* circuit-like (guaranteed) performance
+	* segment is idle if not used by call
+	* commonly used in telephone networks
+* Circuit switching
+	* frequency division multiplexing
+		* divide frequency into multiple channels over one link
+		* Similar to radio on a car
+	* time division multiplexing
+		* divide time on the link over multiple channels
+		* eg packets go A B C D ...
+
+== Packet switching vs Circuit Switching ==
+packet switching allows more users to use the network
+Ex:
+* 1 Mb/s link
+* Each user: 100 kb/s when active
+* active 10% of time
+* Circuit switching
+	* 10 users (bc 1 Mb/s multiplexes into 10 100 kb/s connections)
+* packet switching
+	* 35 users (probability very low that you saturate it with 35 users)
+
+**Packet switching pros / cons:**
+* great for 'bursty' data
+* simple to set up
+* simple to maintain and scale
+* excessive congestion possible
+	* packet delay
+	* packet loss
+	* protocols needed for reliable data transfer and congestion control
+* How to provide circuit-like behavior?
+	* bandwith (and delay) guarantees needed for some applications
+	* unsolved problem
+
+**Circuit switching pros / cons**
+

@@ -1,0 +1,29 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-01-13T16:30:46-06:00
+
+====== Home ======
+Created Monday 13 January 2020
+
+Parallel, Distributed, and Network programming
+
+cpan@ou.edu
+
+Office: Devon 231
+Office hours: 3:30-4:30 pm on Mondays and by appointment
+
+TA
+Abinash Borah
+* Devon 115
+* abinashborah@ou.edu
+* 3:00-4:00 pm on Thursdays and by appointment
+
+
+Books:
+There's a lot, not exactly required
+
+In-class = interactive
+Homework = individual. Can referrence internet etc, but copying non-trivial code with minor modifications is unnacceptable
+Exams:
+* two sheets of notes (one page, front and back)
+* no other referrences, individual only
