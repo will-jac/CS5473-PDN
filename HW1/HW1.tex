@@ -113,12 +113,14 @@ num_a       = input('Input first number to multiply: ')
 num_b       = input('Input second number to multiply: ')
 
 message = 'Multiply ' \
-    + str(num_a) + ' ' + str(num_b) + ' ' + str(num_a+num_b) + ' ' \
+    + str(num_a) + ' ' + str(num_b) + ' '\
+    + str(num_a+num_b) + ' ' \
     + str(datetime.now())
 
 client_socket.settimeout(1.0)
 
-send_message(client_socket, message, (server_name, int(server_port)))
+send_message(client_socket, message, \
+	(server_name, int(server_port)))
 
 client_socket.close()
 \end{lstlisting}
@@ -131,11 +133,46 @@ Ping comparison screenshot:\\
 
 delay $= ((56 $ bytes$ * (8 $ bits$/$bytes$)) / 64 $ kbps$) + 10 $ msec$ + ((56 $ bytes$ * (8 $ bits$/$byte$)) / 2 $ Mbps$) \\= 7 $ msec$ + 10 $ msec$ + 0.224 $ msec$	= 17.224$ msec
 
+
 \section*{Problem3}
 
+Second segment from A to B:
+
 \begin{itemize}
-\item The sequence number is 207, the source port number is 302, and the destination port number is 80 \\
-\item 
+	\item Sequence number = 207
+	\item Source port number = 302
+	\item Destination port number = 80
+\end{itemize}
+Acknowledgment of first arriving segment (if first sent arrives first):
+\begin{itemize}
+	\item Acknowledgment number = 127
+	\item Source port number = 80
+	\item Destination port number = 302
+\end{itemize}
+Acknowledgment of first arriving segment (if second arrives first):
+\begin{itemize}
+	\item Acknowledgment number = 201
+\end{itemize}
+
+
+\section*{Problem 4}
+
+\begin{align}
+\text{First two numbers:\ }
+& 01010011\\
+& 01100110\\
+\text{Partial sum:\ }
+& 10111001\\
+\text{Add third number:\ }
+& 01110100\\
+\text{Sum:}
+1 & 00101101\\
+\text{Carryover:\ }
+& 00101110\\
+\text{Complement:\ }
+& 11010001
+\end{align}
+1's complement = $11010001$
 
 % --------------------------------------------------------------
 %     You don't have to mess with anything below this line.
