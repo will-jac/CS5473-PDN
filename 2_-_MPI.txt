@@ -1,0 +1,171 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2020-02-03T16:33:43-06:00
+
+====== 2 - MPI ======
+Created Monday 03 February 2020
+
+
+====== Flynn's Taxonomy ======
+
+==== SISD ====
+**Single-Instruction, Single Data**
+Single instruction stream
+Single data stream
+
+**Single Threaded Processes**
+* Sequential Execution
+* Global memory access
+* CPU ↔ Memory (Stack (dynamic) ... (dynamic) Heap, Static data, program code)
+
+==== MIMD ====
+**Multiple-Instruction, Multiple Data (MIMD)**
+Multiple instruction stream
+Multiple data stream
+Multiple fully independent processing units / cores, each has its own control unit and ALU
+All processors connected to memory via an interconection
+Each processor can access each memory location
+Communicate impleicitly via shared data structures
+
+Can do this with distributed memory (eg clusters), although not exactly MIMD, more MISD
+
+**Multi-threading**
+Single program
+Single process
+Multiple Data
+
+==== SIMD ====
+**Single Instruction, Multiple Data**
+Parallelism via dividing data among processors
+Same instruction applied to multiple data items (data parallelism)
+All ALU's either execute the same instruction, or remain idle
+ALU's have no instruction storage
+
+single control unit, basically, which makes branching very very hard
+
+EG: GPU's
+( see section 4 )
+
+==== MISD ====
+**Multiple Instruction, Single Data**
+Not really used
+Why would you do the same operations multiple times over the same data
+
+====== HPC Hardware ======
+Why do we need HPC?
+* Analyzing big data
+* High-resolution simulation
+* Complex computational models
+EG: weather forecasting, Genomics
+
+== Memory ==
+Consider many CPU's all connected via a shared interconnect to main memory
+This is a //terrible// idea for HPC, becuase it's not scalable - it creates a huge bottleneck
+
+==== Heterogeneous Architecture ====
+Nodes have several cores (say, 16, 32, 64, 128, etc)
+* All share memory (RAM)
+* shared-memory MIMD
+* They also have a GPU (SIMD)
+
+A global interconnection network connects all nodes (Distributed-memory MIMD)
+
+==== Bus-based networks ====
+Can use a bus for the interconnect
+This isn't really a great idea, bc of saturation
+
+==== Fully-connected network ====
+connect all N nodes to each other
+Not scalable (size = n^2)
+
+==== Partially connected networks ====
+**Crossbar topology**
+* Any computer can talk to any other
+* All pair-wise communication can occur simulaneously
+* Need N^2 switches
+* Need to set switches up (delay)
+**Omega Network**
+**3D Mesh**
+**2D Torus**
+
+==== Topology Comparison ====
+**Degree**
+* maximum number of neighbors of any node
+**Diameter**
+* length of the longest of all shortest paths between any two notdes
+**Bisection-width**
+* minimum number of eges to be removed to seperate the network into two equal halves
+
+Ideal network (contradictory requirements)
+**Constant degree **(eg, independent of network size)
+* Allows scaling without excessive number of connections
+**Low diameter**
+* minimized
+**High bisection-width**
+* Identifies bottleneck
+* Requires a non-constant network degree
+
+Performance metrics:
+**Latency**
+* time that elapses from start of send to start of recieve (first byte)
+**Bandwidth**
+* How fast the rest of the data can be sent
+
+Transmission time = latency + size / bandwidth
+
+
+
+====== HPC Performance ======
+
+==== Parallel Performance ====
+* Single CPU = serially
+* How do we do things faster via parallel?
+* EG: addition
+	* speed up by dividing the list of numbers in half
+	* need to combine results at the end
+* Overhead exists
+
+== Linear Speed up: ==
+T_{parallel} = T_{Serial} / p
+(p = number of processors)
+
+Difficult to achieve, because of overhead (communication time, additional computations required to sync)
+eg:
+N / p - 1 additiona in parallel
+
+== Benchmarking ==
+Speedup:
+S = T_{serial} / T_{parallel}
+Effeciency:
+E = S / P = (T_{Serial} / T_{parallel} ) / p = T_{Serial} / (P * T_{Parallel })
+
+As S increases, E drops off. Why?
+
+== Parallel Overhead ==
+T_{Parallel} = T_{serial} / p + T_{overhead}
+Overhead from:
+* Communication
+* Synchronization
+
+As problem size increases, serial time increases proportionally, but the overhead time is generally constant or increases very slowly
+=> greater effeciency on larger problme sizes
+
+==== Amdahl's Law ====
+Unless virtually all of a serial program is parallelized, the possible speed-up is very limited, regardless of the number of cores
+
+{{.\equation.png?type=equation}}
+r = fraction of a serial program that is unparallelized
+k = fraction that has been parallelized
+p = number of processors
+
+however, in practice, we don't operate on a fixed workload, but use parallelization to do bigger work
+
+==== Gustafson's Law ====
+
+{{.\equation001.png?type=equation}}
+h = portion that remained serial. Assume h does not increase with p
+w = portion parallelized. Assume linear scalability with p
+h+w=1
+p = number of processors
+
+With more processors we can do more stuff! (make big problems computable)
