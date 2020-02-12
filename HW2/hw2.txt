@@ -1,0 +1,10 @@
+Problem 1:
+
+Problem 2:
+
+* Estimation of parallel computation time:
+Serial Dot Product = K*M + (K-1)*A
+Parallel Dot Product = 4*T+K/2*M+(K-1)/2*A
+
+The parallel algorithm is faster than the serial algorithm if 4*T < (K*M + (K-1)*A)/2
+This is because otherwise, 4*T >= (K*M + (K-1)*A)/2, which implies that 4*T + (K*M + (K-1)*A)/2 >= K*M + (K-1)*A, which is the runtime of the serial program

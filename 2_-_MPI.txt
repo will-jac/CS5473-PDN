@@ -134,7 +134,8 @@ eg:
 N / p - 1 additiona in parallel
 
 == Benchmarking ==
-Speedup:
+
+== Speedup: ==
 S = T_{serial} / T_{parallel}
 Effeciency:
 E = S / P = (T_{Serial} / T_{parallel} ) / p = T_{Serial} / (P * T_{Parallel })
@@ -169,3 +170,58 @@ h+w=1
 p = number of processors
 
 With more processors we can do more stuff! (make big problems computable)
+
+==== Scalability ====
+Programs that can maintaing a constant efficiency without increasing problem size are said to be **strongle scalable**
+Programs that maintain a constant effeciency if the problem size increases at thesame rate as the number of processes are said to be **weakly scalable**
+
+
+====== MPI ======
+Message Passing Interfase
+
+MPI is an Application Programming Interface (API)
+MPI is implemented in libraries
+#include <mpi.h>
+
+different labs / compute clusters use different MPI implementations
+* some will be hardware-optimized
+
+To compile, need to use an mpi compiler
+
+$ mpicc -g -Wall -o mpi_hello mpi_hello.c
+
+* Must load a MPI module first
+$ module load intel
+
+== compilation options ==
+-g 			: produce debug messages
+-Wall 		: report all errors
+-o <name> 	: set output name
+
+== Execution ==
+mpiexec -n <int> <executable>
+-n <int>		: number of processes
+may need to reload the MPI module
+
+==== Scheduling (slurm) ====
+
+* Total number of tasks
+#SBATCH -ntasks = 40
+* Number of nodes
+#SBATCH --nodes = 20
+* Maximum number of tasks per node
+#SBATCH --ntasks-per-node=2
+
+n_tasks_per_node * n_nodes >= n_tasks
+
+* number of CPUs per task
+#SBATCH --cpus-per-task
+— one cpu per thread
+
+--ntasks = the number of MPI processes
+--cpus-per-task = OMP_NUM_THREADS (i.e. the number of threads per 
+process)
+--nodes = (--ntasks* --cpus-per-task) / (number of CPUs per node)
+
+* Prevent other tasks from running on this node
+#SBATCH --exclusive
