@@ -1,0 +1,5 @@
+Working directory:
+/home/oucs4473026/HW2
+
+export LSCRATCH=/lscratch/31181535
+The dot product of A and B is 744

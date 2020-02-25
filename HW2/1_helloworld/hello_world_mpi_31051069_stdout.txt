@@ -1,0 +1,24 @@
+Working directory:
+/home/oucs4473026/SIPE/HelloWorld/C/MPI
+
+export LSCRATCH=/lscratch/31051069
+9 of 20: Hello, world!
+0 of 20: Hello, world!
+1 of 20: Hello, world!
+2 of 20: Hello, world!
+3 of 20: Hello, world!
+4 of 20: Hello, world!
+5 of 20: Hello, world!
+6 of 20: Hello, world!
+7 of 20: Hello, world!
+8 of 20: Hello, world!
+10 of 20: Hello, world!
+11 of 20: Hello, world!
+12 of 20: Hello, world!
+13 of 20: Hello, world!
+14 of 20: Hello, world!
+15 of 20: Hello, world!
+16 of 20: Hello, world!
+17 of 20: Hello, world!
+18 of 20: Hello, world!
+19 of 20: Hello, world!

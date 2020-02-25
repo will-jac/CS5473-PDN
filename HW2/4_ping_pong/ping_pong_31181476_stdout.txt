@@ -1,0 +1,19 @@
+Working directory:
+/home/oucs4473026/HW2
+
+2^10:
+export LSCRATCH=/lscratch/31181476
+size = 2^10
+0.000451
+2^11:
+export LSCRATCH=/lscratch/31181476
+size = 2^11
+0.000699
+2^12:
+export LSCRATCH=/lscratch/31181476
+size = 2^12
+0.001222
+2^13:
+export LSCRATCH=/lscratch/31181476
+size = 2^13
+0.002218

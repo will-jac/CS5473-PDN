@@ -1,0 +1,4 @@
+Working directory:
+/home/oucs4473026/SIPE/Greetings/C
+
+export LSCRATCH=/lscratch/31053603

@@ -1,0 +1,6 @@
+Working directory:
+/home/oucs4473026/SIPE/HelloWorld/C/MPI
+
+export LSCRATCH=/lscratch/31051497
+1 of 2: Hello, world!
+0 of 2: Hello, world!

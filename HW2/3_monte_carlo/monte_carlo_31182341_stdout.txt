@@ -1,0 +1,6 @@
+Working directory:
+/home/oucs4473026/HW2
+
+export LSCRATCH=/lscratch/31182341
+The value of pi yielded by the monte carlo simulation is: 3.133118
+Time = 0.000156

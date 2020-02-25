@@ -1,0 +1,1 @@
+slurmstepd: error: couldn't chdir to `/home/yourusername/SIPE/Greetings/C': No such file or directory: going to /tmp instead
